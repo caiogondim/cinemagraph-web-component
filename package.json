@@ -1,0 +1,20 @@
+{
+  "name": "cinemagraph-web-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caiogondim/cinemagraph-web-component.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caiogondim/cinemagraph-web-component/issues"
+  },
+  "homepage": "https://github.com/caiogondim/cinemagraph-web-component#readme"
+}
