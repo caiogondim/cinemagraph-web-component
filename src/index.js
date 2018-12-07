@@ -7,6 +7,10 @@ async function supportsVideoOnImg(videoSrc) {
   })
 }
 
+function applyStyle(el) {
+  el.style.width = '100%'
+}
+
 class VhsCinemagraph extends HTMLElement {
   static get observedAttributes() {
     return ['src', 'gif-fallback']
@@ -15,6 +19,15 @@ class VhsCinemagraph extends HTMLElement {
   async connectedCallback() {
     const videoSrc = this.getAttribute('src')
     const shadow = this.attachShadow({ mode: 'open' })
+    shadow.innerHTML = `
+      <style>
+        :host {
+          display: inline-block;
+          position: relative;
+          width: 100%;
+        }
+      </style>
+    `
 
 
     if (await supportsVideoOnImg(videoSrc)) {
@@ -22,6 +35,8 @@ class VhsCinemagraph extends HTMLElement {
       img.onload = () => console.log('load')
       img.onerror = () => console.log('error')
       img.src = this.getAttribute('src')
+      applyStyle(img)
+
       shadow.appendChild(img)
     } else {
       const video = document.createElement('video')
@@ -29,6 +44,7 @@ class VhsCinemagraph extends HTMLElement {
       video.muted = true
       video.autoplay = true
       video.loop = true
+      applyStyle(video)
 
       shadow.appendChild(video)
     }
